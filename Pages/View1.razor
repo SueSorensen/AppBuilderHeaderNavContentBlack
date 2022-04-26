@@ -1,0 +1,31 @@
+@page "/"
+@inject NavigationManager NavigationManager
+@inject HttpClient HttpClient
+
+<div class="view-1-container row">
+    <div class="group column">
+        <div class="group_1 group_2 row">
+            <IgbDataGrid DataSource="northwindAzureApiCustomers" AutoGenerateColumns="false" Density="ControlDisplayDensity.Cosy" SelectionMode="GridSelectionMode.None" Height="100%" DefaultColumnMinWidth="136" class="grid" view-1-scope>
+                <IgbTextColumn HeaderText="customerID" Field="CustomerID" IsFilteringEnabled="true"></IgbTextColumn>
+                <IgbTextColumn HeaderText="companyName" Field="CompanyName" IsFilteringEnabled="true"></IgbTextColumn>
+                <IgbTextColumn HeaderText="address" Field="Address" IsFilteringEnabled="true"></IgbTextColumn>
+                <IgbTextColumn HeaderText="city" Field="City" IsFilteringEnabled="true"></IgbTextColumn>
+                <IgbTextColumn HeaderText="region" Field="Region" IsFilteringEnabled="true"></IgbTextColumn>
+                <IgbTextColumn HeaderText="postalCode" Field="PostalCode" IsFilteringEnabled="true"></IgbTextColumn>
+                <IgbTextColumn HeaderText="country" Field="Country" IsFilteringEnabled="true"></IgbTextColumn>
+            </IgbDataGrid>
+        </div>
+        <div class="group_1 row">
+            <IgbInput DisplayType="InputType.Text" Label="Label/Placeholder" Outlined="true" class="input" view-1-scope></IgbInput>
+        </div>
+    </div>
+</div>
+
+@code {
+    private NorthwindAzure.ApiCustomersType[] northwindAzureApiCustomers = Array.Empty<NorthwindAzure.ApiCustomersType>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        northwindAzureApiCustomers = await HttpClient.GetFromJsonAsync<NorthwindAzure.ApiCustomersType[]>("http://northwindcloud.azurewebsites.net/api/customers") ?? northwindAzureApiCustomers;
+    }
+}

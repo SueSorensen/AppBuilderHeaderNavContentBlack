@@ -1,0 +1,41 @@
+.view-1-container {
+    height: 100%;
+    align-items: stretch;
+}
+.group {
+    padding: 32px;
+    flex-grow: 1;
+    flex-basis: 0;
+    align-items: stretch;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_1 {
+    height: 50%;
+    flex-shrink: 0;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_2 {
+    align-items: stretch;
+}
+.grid {
+    min-width: 50px;
+    min-height: 50px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.input {
+    height: max-content;
+    min-width: min-content;
+    flex-shrink: 0;
+}
+.row {
+    display: flex;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+}
